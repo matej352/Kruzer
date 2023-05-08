@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HPVFJWxZOOmfRt4l/I0WAv0/vpj8bjU9qHTKv3c/hXTQZK+kSfKikdoL/i03uGanIj0Al9Ag7wzu+8NfXwpdaA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Matej\\source\\repos\\Kruzer\\Kruzer\\Back-end\\KruzerApp\\KruzerApp.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Matej\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
