@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "KruzerApp", "KruzerApp\KruzerApp.fsproj", "{0222AFE9-7A45-4DC3-966C-C58B9BF325DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KruzerApp", "KruzerApp\KruzerApp.csproj", "{2AF4F171-FE24-46C9-864C-81244103FD7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0222AFE9-7A45-4DC3-966C-C58B9BF325DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0222AFE9-7A45-4DC3-966C-C58B9BF325DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0222AFE9-7A45-4DC3-966C-C58B9BF325DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0222AFE9-7A45-4DC3-966C-C58B9BF325DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF4F171-FE24-46C9-864C-81244103FD7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF4F171-FE24-46C9-864C-81244103FD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF4F171-FE24-46C9-864C-81244103FD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF4F171-FE24-46C9-864C-81244103FD7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {69F080E7-8516-4E94-9B7E-F997B59997EF}
+		SolutionGuid = {A33D2A14-5FD0-466F-BD96-D2C55647033C}
 	EndGlobalSection
 EndGlobal

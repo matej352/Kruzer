@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "HPVFJWxZOOmfRt4l/I0WAv0/vpj8bjU9qHTKv3c/hXTQZK+kSfKikdoL/i03uGanIj0Al9Ag7wzu+8NfXwpdaA==",
+  "dgSpecHash": "mB8538UapPRrLwhysZGtOAPl2BjD17vltfV8UtqpWcGBSVJ0UaeokVunde9YKHrbCBFY8kfO/4/NHAnEa0MDbA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matej\\source\\repos\\Kruzer\\Kruzer\\Back-end\\KruzerApp\\KruzerApp.fsproj",
+  "projectFilePath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\KruzerApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Matej\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512"
+    "C:\\Users\\Matej\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Matej\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Matej\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Matej\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Matej\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Matej\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
   ],
   "logs": []
 }

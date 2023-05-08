@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Matej\\source\\repos\\Kruzer\\Kruzer\\Back-end\\KruzerApp\\KruzerApp.fsproj": {}
+    "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\KruzerApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Matej\\source\\repos\\Kruzer\\Kruzer\\Back-end\\KruzerApp\\KruzerApp.fsproj": {
+    "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\KruzerApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matej\\source\\repos\\Kruzer\\Kruzer\\Back-end\\KruzerApp\\KruzerApp.fsproj",
+        "projectUniqueName": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\KruzerApp.csproj",
         "projectName": "KruzerApp",
-        "projectPath": "C:\\Users\\Matej\\source\\repos\\Kruzer\\Kruzer\\Back-end\\KruzerApp\\KruzerApp.fsproj",
+        "projectPath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\KruzerApp.csproj",
         "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matej\\source\\repos\\Kruzer\\Kruzer\\Back-end\\KruzerApp\\obj\\",
+        "outputPath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -32,17 +32,20 @@
             "targetAlias": "net5.0",
             "projectReferences": {}
           }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
         }
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "FSharp.Core": {
-              "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
+            "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.0.0, )",
-              "generatePathProperty": true
+              "version": "[5.6.3, )"
             }
           },
           "imports": [
