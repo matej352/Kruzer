@@ -1,6 +1,23 @@
+using KruzerApp.Models;
+using KruzerApp.Repositories;
+using KruzerApp.Repositories.impl;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<KruzerContext>(options =>
+options.UseNpgsql(builder.Configuration.GetConnectionString("KruzerAppDb")));
+
+builder.Services.AddCors(c =>
+{
+    c.AddPolicy("CorsPolicy", options => options.AllowCredentials().AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
+});
+
+
+
 // Add services to the container.
+builder.Services.AddTransient<IPutnikRepository, PutnikRepository>();
+builder.Services.AddTransient<IKrstarenjeRepository, KrstarenjeRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
