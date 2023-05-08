@@ -1,4 +1,5 @@
-﻿using KruzerApp.Models;
+﻿using KruzerApp.DTOs;
+using KruzerApp.Models;
 using KruzerApp.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Entity;
@@ -14,7 +15,7 @@ namespace KruzerApp.Controllers
 
         private readonly IPutnikRepository _repository;
 
-        public PutnikController(IPutnikRepository repository) 
+        public PutnikController(IPutnikRepository repository)
         {
             _repository = repository;
         }
@@ -30,17 +31,40 @@ namespace KruzerApp.Controllers
 
         }
 
-        // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+
+
+        [HttpGet]
+        [Route("GetPutnik")]
+        public async Task<ActionResult<Putnik>> GetPutnik([FromQuery(Name = "param")] int id)
         {
-            return "value";
+            var putnik = await _repository.GetById(id);
+            if (putnik.Value == null)
+            {
+                return Problem(statusCode: StatusCodes.Status404NotFound, detail: $"Invalid id = {id}");
+            }
+            return putnik.Value;
+
         }
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
+        public async Task<ActionResult<PutnikDto>> CreatePutnik(CreatePutnikDto newPutnik)
+        { 
+            try
+            {
+                int newPutnikId = await _repository.Save(newPutnik);
+
+                Putnik? putnik = (await _repository.GetById(newPutnikId)).Value;
+
+
+                return CreatedAtAction(nameof(GetPutnik), new { id = newPutnikId }, putnik);
+            }
+            catch(Exception e) 
+            {
+                return Problem(statusCode: StatusCodes.Status404NotFound, detail: e.Message);
+            }
+        
+            
         }
 
         // PUT api/<ValuesController>/5
