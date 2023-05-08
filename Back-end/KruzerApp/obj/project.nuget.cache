@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M87nRBb+jZ7mK/bFgRLMfr0FkvRodb0ZovmDJaB0HaJuGmVct2Pre991oembGcC7kyGpA1QTyBVeN5UK6vtLwA==",
+  "dgSpecHash": "lNO7HzYKcI5Qw+WNHbwfmSHNw+QicETNDB9bZ66qByiR21VQyTgyOsDrBWRFzsRkW9epb2v1HKHzUYM+/G5EnA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\KruzerApp.csproj",
+  "projectFilePath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Matej\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Matej\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

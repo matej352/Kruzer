@@ -230,11 +230,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\KruzerApp.csproj",
+      "projectUniqueName": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp.csproj",
       "projectName": "KruzerApp",
-      "projectPath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\KruzerApp.csproj",
+      "projectPath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp.csproj",
       "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\KruzerApp\\obj\\",
+      "outputPath": "C:\\Users\\Matej\\source\\repos\\KruzerApp\\Back-end\\KruzerApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
