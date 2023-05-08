@@ -1,4 +1,5 @@
-﻿using KruzerApp.Models;
+﻿using KruzerApp.DTOs;
+using KruzerApp.Models;
 using KruzerApp.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ namespace KruzerApp.Controllers
 
         // GET: api/<ValuesController>
         [HttpGet]
-        public async Task<IEnumerable<Krstarenje>> Get()
+        public async Task<IEnumerable<KrstarenjeWithRezervacijeDto>> Get()
         {
             var krstarenja = await _repository.GetAll();
 
