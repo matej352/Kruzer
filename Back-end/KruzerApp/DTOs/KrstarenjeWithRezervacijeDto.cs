@@ -16,9 +16,20 @@
 
         public int Popunjenost { get; set; }
 
+        public List<LokacijaDto>? Lokacije { get; set; }
+
         public List<RezervacijaDto>? Rezervacije { get; set; }
 
 
+    }
+
+    public class LokacijaDto
+    {
+        public int Id { get; set; }
+
+        public string Grad { get; set; } = null!;
+
+        public string Država { get; set; } = null!;
     }
 
     public class RezervacijaDto

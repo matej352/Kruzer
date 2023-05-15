@@ -1,78 +1,75 @@
 ﻿using KruzerApp.DTOs;
 using KruzerApp.Models;
 using KruzerApp.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Data.Entity;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace KruzerApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PutnikController : ControllerBase
+    public class RezervacijaController : ControllerBase
     {
+        private readonly IRezervacijaRepository _repository;
 
-        private readonly IPutnikRepository _repository;
-
-        public PutnikController(IPutnikRepository repository)
+        public RezervacijaController(IRezervacijaRepository repository)
         {
             _repository = repository;
         }
 
+        /*
 
         // GET: api/<ValuesController>
         [HttpGet]
-        [Route("GetAll")]
-        public async Task<IEnumerable<Putnik>> GetAll()
+        public async Task<IEnumerable<Putnik>> Get()
         {
-            var putnici = await _repository.GetAll();
+            var rezervacije = await _repository.GetAll();
 
-            return putnici;
+            return rezervacije;
 
         }
 
-
+        */
 
         [HttpGet]
         [Route("GetOne")]
-        public async Task<ActionResult<Putnik>> GetPutnik([FromQuery(Name = "param")] int id)
+        public async Task<ActionResult<RezervacijaDto>> GetRezervacija([FromQuery(Name = "param")] int id)
         {
-            var putnik = await _repository.GetById(id);
-            if (putnik.Value == null)
+            var rezervacija = await _repository.GetById(id);
+            if (rezervacija.Value == null)
             {
                 return Problem(statusCode: StatusCodes.Status400BadRequest, detail: $"Invalid id = {id}");
             }
-            return putnik.Value;
+            return rezervacija.Value;
 
         }
 
+        
 
         [HttpPost]
         [Route("Create")]
-        public async Task<ActionResult<PutnikDto>> CreatePutnik(CreatePutnikDto newPutnik)
-        { 
+        public async Task<ActionResult<RezervacijaDto>> CreateRezervacija(CreateRezervacijaDto newRezervacija)
+        {
             try
             {
-                int newPutnikId = await _repository.Save(newPutnik);
+                int newRezervacijaId = await _repository.Save(newRezervacija);
 
-                Putnik? putnik = (await _repository.GetById(newPutnikId)).Value;
+                RezervacijaDto? rezervacija = (await _repository.GetById(newRezervacijaId)).Value;
 
-
-                return CreatedAtAction(nameof(GetPutnik), new { id = newPutnikId }, putnik);
+                return CreatedAtAction(nameof(GetRezervacija), new { id = newRezervacijaId }, rezervacija);
             }
-            catch(Exception e) 
+            catch (Exception e)
             {
                 return Problem(statusCode: StatusCodes.Status400BadRequest, detail: e.Message);
             }
         }
 
-        [HttpPut("{nadimak}")]
-        public async Task<ActionResult> UpdatePutnik(string nadimak, UpdatePutnikDto putnik)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateRezervacija(int id, UpdateRezervacijaDto rezervacija)
         {
             try
             {
-                await _repository.Update(putnik, nadimak);
+                await _repository.Update(rezervacija, id);
                 return NoContent();
             }
             catch (Exception e)
@@ -83,7 +80,7 @@ namespace KruzerApp.Controllers
 
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeletePutnik(int id)
+        public async Task<ActionResult> DeleteRezervacija(int id)
         {
             try
             {
@@ -96,5 +93,6 @@ namespace KruzerApp.Controllers
                 return Problem(statusCode: StatusCodes.Status400BadRequest, detail: e.Message);
             }
         }
+
     }
 }

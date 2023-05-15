@@ -18,6 +18,8 @@ builder.Services.AddCors(c =>
 // Add services to the container.
 builder.Services.AddTransient<IPutnikRepository, PutnikRepository>();
 builder.Services.AddTransient<IKrstarenjeRepository, KrstarenjeRepository>();
+builder.Services.AddTransient<IRezervacijaRepository, RezervacijaRepository>();
+builder.Services.AddTransient<ILokacijaRepository, LokacijaRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

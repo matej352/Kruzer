@@ -10,6 +10,10 @@ namespace KruzerApp.Repositories
 
         public Task<int> Save(CreatePutnikDto putnik);
 
+        public Task Update(UpdatePutnikDto putnik, String nadimak);
+
+        public Task Delete(int id);
+
         public Task<ActionResult<Putnik?>> GetById(int id);
 
     }

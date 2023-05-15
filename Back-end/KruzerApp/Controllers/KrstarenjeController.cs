@@ -19,15 +19,53 @@ namespace KruzerApp.Controllers
         }
 
 
-        // GET: api/<ValuesController>
         [HttpGet]
-        public async Task<IEnumerable<KrstarenjeWithRezervacijeDto>> Get()
+        [Route("GetAll")]
+        public async Task<IEnumerable<KrstarenjeWithRezervacijeDto>> GetKrstarenja()
         {
             var krstarenja = await _repository.GetAll();
 
             return krstarenja;
 
         }
+
+
+        [HttpPost]
+        [Route("Create")]
+        public async Task<ActionResult<KrstarenjeWithRezervacijeDto>> CreateKrstarenje(CreateKrstarenjeDto newKrstarenje)
+        {
+            try
+            {
+                int newKrstarenjeId = await _repository.Save(newKrstarenje);
+
+                Krstarenje? krstarenje = (await _repository.GetById(newKrstarenjeId)).Value;
+
+                KrstarenjeWithRezervacijeDto krstarenjeDto = await _repository.Get(krstarenje!.Id);
+
+                return Ok(krstarenjeDto);
+            }
+            catch (Exception e)
+            {
+                return Problem(statusCode: StatusCodes.Status400BadRequest, detail: e.Message);
+            }
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateKrstarenje(int id, UpdateKrstarenjeDto krstarenje)
+        {
+            try
+            {
+                await _repository.Update(krstarenje);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(statusCode: StatusCodes.Status400BadRequest, detail: e.Message);
+            }
+        }
+
+
 
     }
 }

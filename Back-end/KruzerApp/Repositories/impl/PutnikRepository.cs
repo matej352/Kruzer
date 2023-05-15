@@ -58,6 +58,38 @@ namespace KruzerApp.Repositories.impl
             return await Task.FromResult(savedPutnik.Id);
         }
 
+        public async Task Update(UpdatePutnikDto putnikDto, String nadimak)
+        {
+
+            checkIsNewNadimakUnique(putnikDto.Nadimak, nadimak);
+
+            var putnik = await _context.Putniks.SingleOrDefaultAsync(p => p.Nadimak == nadimak);
+
+            if(putnik is not null)
+            {
+                putnik.Ime = putnikDto.Ime;
+                putnik.Prezime = putnikDto.Prezime;
+                putnik.Nadimak = putnikDto.Nadimak;
+                putnik.Email = putnikDto.Email;
+                await _context.SaveChangesAsync();
+            } else
+            {
+                throw new Exception($"Putnik with nadimak {nadimak} does not exists!");
+            }
+        }
+
+        public async Task Delete(int id)
+        {
+            var putnik = await _context.Putniks.FindAsync(id);
+            if (putnik is null)
+            {
+                throw new Exception($"Putnik with id {id} does not exists!");
+            }
+            _context.Remove(putnik);
+
+            await _context.SaveChangesAsync();
+        }
+
 
 
 
@@ -76,6 +108,20 @@ namespace KruzerApp.Repositories.impl
                 throw new Exception("Nadimak should be unique!");
             }
         }
+
+        public void checkIsNewNadimakUnique(string nadimakInDto, string nadimakInDatabase)
+        {
+            if (nadimakInDto != nadimakInDatabase)
+            {
+                Putnik? putnik = _context.Putniks.Where(p => p.Nadimak == nadimakInDto).SingleOrDefault();
+
+                if (putnik != null)
+                {
+                    throw new Exception("New nadimak should be unique!");
+                }
+            }
+        }
+
 
     }
 }
