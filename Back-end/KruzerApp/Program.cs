@@ -10,7 +10,8 @@ options.UseNpgsql(builder.Configuration.GetConnectionString("KruzerAppDb")));
 
 builder.Services.AddCors(c =>
 {
-    c.AddPolicy("CorsPolicy", options => options.AllowCredentials().AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
+    c.AddPolicy("CorsPolicy", options => options.AllowCredentials().AllowAnyMethod().AllowAnyHeader()
+           .WithOrigins("http://localhost:4200", "http://localhost:3000"));
 });
 
 
@@ -34,6 +35,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
