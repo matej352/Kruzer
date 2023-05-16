@@ -8,9 +8,9 @@
 
         public string Opis { get; set; } = null!;
 
-        public DateTime Datumpocetak { get; set; }
+        public DateOnly Datumpocetak { get; set; }
 
-        public DateTime Datumkraj { get; set; }
+        public DateOnly Datumkraj { get; set; }
 
         public List<LokacijaDto>? Lokacije { get; set; }
     }
