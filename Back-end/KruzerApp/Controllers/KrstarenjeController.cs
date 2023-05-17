@@ -29,6 +29,20 @@ namespace KruzerApp.Controllers
 
         }
 
+        [HttpGet]
+        [Route("GetOne")]
+        public async Task<ActionResult<KrstarenjeWithRezervacijeDto>> GetKrstarenje([FromQuery(Name = "param")] int id)
+        {
+            KrstarenjeWithRezervacijeDto krstarenje = await _repository.Get(id);
+            if (krstarenje == null)
+            {
+                return Problem(statusCode: StatusCodes.Status400BadRequest, detail: $"Invalid id = {id}");
+            }
+            return krstarenje;
+
+        }
+
+
 
         [HttpPost]
         [Route("Create")]
