@@ -2,7 +2,7 @@ import { Badge, Dropdown, Space, Table } from "antd";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const Master = () => {
+const MasterDetail = () => {
     return (
         <Table
             columns={columns}
@@ -16,4 +16,4 @@ const Master = () => {
     );
 }
 
-export default Master;
+export default MasterDetail;

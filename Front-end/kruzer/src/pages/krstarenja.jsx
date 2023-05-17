@@ -20,20 +20,16 @@ const items = [
 ];
 const Krstarenja = () => {
   const [krstarenja, setKrstarenja] = useState([])
-  /*fetch(
-    "https://localhost:7295/api/Krstarenje/GetAll",
-  ).then((response) => { return response.json()})
-   .then((response) => { console.log("response ", response)});*/
+
   useEffect(() => {
     
     api.get('/api/Krstarenje/GetAll').then((response) => {
       console.log(response.data);
+      setKrstarenja(response.data)
     }).catch((error) => {
       console.error(error);
     });
 
-    
-    
   }, [])
   
   const expandedRowRender = () => {
@@ -41,7 +37,7 @@ const Krstarenja = () => {
       {
         title: "ID",
         dataIndex: "passengerID",
-        key: "reservationID",
+        key: "passengerID",
       },
       {
         title: "Ime",
@@ -74,23 +70,32 @@ const Krstarenja = () => {
         key: "operation",
         render: () => (
           <Space size="middle">
-            <a>Obriši</a>
+            <a onClick={() => {console.log(data)}}>Obriši</a>
             <a>Uredi</a>
           </Space>
         ),
       },
     ];
+
     const data = [];
-    for (let i = 0; i < 3; ++i) {
-      data.push({
-        key: i.toString(),
-        date: "2014-12-24 23:12:00",
-        name: "This is production name",
-        upgradeNum: "Upgraded: 56",
-      });
-    }
+    let putnik = krstarenja[0]?.rezervacije[0]?.putnik
+    data.push({
+      key: putnik?.id,
+      passengerID: putnik?.id,
+      passengerName: putnik?.ime,
+      passengerSurname: putnik?.prezime,
+      passengerNickname:putnik?.nadimak,
+      passengerEmail:putnik?.email,
+      passengerGender:putnik?.spol,
+      dataIndex: putnik?.id
+      //data index mozda pomogne za otvaranje modala da se zna za kojeg je
+    });
+    console.log("data ", data, krstarenja)
+    
     return <Table columns={columns} dataSource={data} pagination={false} />;
   };
+
+
   const columns = [
     {
       title: "ID",
@@ -113,6 +118,8 @@ const Krstarenja = () => {
       render: () => <a onClick={() => setModalVisible(true)}>Uredi</a>,
     },
   ];
+
+
   const data = [];
   for (let i = 0; i < 3; ++i) {
     data.push({
@@ -125,6 +132,8 @@ const Krstarenja = () => {
       createdAt: "2014-12-24 23:12:00",
     });
   }
+
+
   return (
     <>
       <Table
