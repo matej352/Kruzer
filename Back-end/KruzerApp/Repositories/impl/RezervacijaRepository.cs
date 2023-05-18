@@ -79,8 +79,8 @@ namespace KruzerApp.Repositories.impl
             if (rezervacija is not null)
             {
 
-                await _krstarenje.ChangePopunjenost(id, rezervacija.Brojputnika, "remove"); //sub brojputnika in old rezervacija
-                await _krstarenje.ChangePopunjenost(id, rezervacijaDto.Brojputnika); //add brojputnika in new rezervacija
+                await _krstarenje.ChangePopunjenost(rezervacija.KrstarenjeId, rezervacija.Brojputnika, "remove"); //sub brojputnika in old rezervacija
+                await _krstarenje.ChangePopunjenost(rezervacija.KrstarenjeId, rezervacijaDto.Brojputnika); //add brojputnika in new rezervacija
 
                 rezervacija.Brojputnika = rezervacijaDto.Brojputnika;
                 rezervacija.Vrijeme = DateOnly.FromDateTime(DateTime.Today);
