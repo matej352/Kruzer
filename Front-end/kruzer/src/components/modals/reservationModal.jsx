@@ -2,7 +2,7 @@ import { Select, Modal, Form, Input, notification } from "antd";
 import { useState, useEffect } from "react";
 import { api } from "@/src/core/api";
 
-function ReservationModal({ visible, setVisible, krstarenjeId }) {
+function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
   const [putnici, setPutnici] = useState([]);
 
   useEffect(() => {
@@ -36,10 +36,11 @@ function ReservationModal({ visible, setVisible, krstarenjeId }) {
     console.log("data ", data);
     const response = await api.post("/api/Rezervacija/Create", data);
 
-    if (response.status == 204) {
+    if (response.status == 204 || response.status == 201) {
       notification.open({
         message: "Rezervacija kreirana!",
       });
+      setRefetch((prev) => !prev);
     } else {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",

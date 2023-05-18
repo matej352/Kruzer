@@ -2,7 +2,12 @@ import { Select, Modal, Form, Input, notification } from "antd";
 import { useState, useEffect } from "react";
 import { api } from "@/src/core/api";
 
-function CruisingModal({ visible, setVisible, reservation = {}, setRefetch }) {
+function EditReservationModal({
+  visible,
+  setVisible,
+  reservation = {},
+  setRefetch,
+}) {
   const { id, brojputnika } = reservation;
   const handleCancel = () => {
     setVisible(false);
@@ -61,4 +66,4 @@ function CruisingModal({ visible, setVisible, reservation = {}, setRefetch }) {
     </>
   );
 }
-export default CruisingModal;
+export default EditReservationModal;

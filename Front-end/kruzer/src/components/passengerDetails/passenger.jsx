@@ -9,8 +9,6 @@ export default function Passenger({ passenger }) {
 
   const { ime, prezime, nadimak, email } = passenger;
 
-  const [form] = Form.useForm();
-
   async function handlePassengerDelete() {
     const response = await api.delete("/api/Putnik/" + passenger.id);
     if (response.status == 204) {
@@ -38,6 +36,8 @@ export default function Passenger({ passenger }) {
       });
     }
   }
+
+  const [form] = Form.useForm();
 
   return (
     <div>
