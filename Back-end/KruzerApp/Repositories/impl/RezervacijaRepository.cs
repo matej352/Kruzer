@@ -108,7 +108,7 @@ namespace KruzerApp.Repositories.impl
 
             await _context.SaveChangesAsync();
 
-            await _krstarenje.ChangePopunjenost(id, rezervacija.Brojputnika, "remove");
+            await _krstarenje.ChangePopunjenost(rezervacija.KrstarenjeId, rezervacija.Brojputnika, "remove");
 
         }
 
