@@ -14,6 +14,6 @@
 
         public int Popunjenost { get; set; }
 
-        public List<LokacijaDto>? Lokacije { get; set; }
+        public List<int>? LokacijeIds { get; set; }
     }
 }

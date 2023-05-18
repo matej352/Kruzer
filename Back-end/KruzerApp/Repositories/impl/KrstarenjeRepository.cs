@@ -140,19 +140,18 @@ namespace KruzerApp.Repositories.impl
 
             var id = await findLatestId();
 
-            List<int> lokacijaIds = new List<int>();
 
-            if (krstarenje.Lokacije is not null)
+            List<Lokacija> existingLokacije = new List<Lokacija>();
+
+            if (krstarenje.LokacijeIds is not null)
             {
-                foreach (LokacijaDto lokacijaDto in krstarenje.Lokacije)
-                {
-                    lokacijaIds.Add(lokacijaDto.Id);
-                }
+                existingLokacije = await _context.Lokacijas
+                    .Where(l => krstarenje.LokacijeIds.Contains(l.Id))
+                    .ToListAsync();
             }
+         
       
-            List<Lokacija> existingLokacije = await _context.Lokacijas
-                .Where(l => lokacijaIds.Contains(l.Id))
-                .ToListAsync();
+          
 
 
             Krstarenje savedKrstarenje = new Krstarenje
@@ -228,13 +227,13 @@ namespace KruzerApp.Repositories.impl
             krstarenjeInDb.Datumpocetak = DateOnly.Parse(krstarenje.Datumpocetak.ToShortDateString());
             krstarenjeInDb.Datumkraj = DateOnly.Parse(krstarenje.Datumkraj.ToShortDateString());
 
-            if (krstarenje.Lokacije is not null)
+            if (krstarenje.LokacijeIds is not null)
             {
                 // Get the existing Lokacije connected to the Krstarenje
                 var existingLokacijeIds = krstarenjeInDb.Lokacijas.Select(l => l.Id).ToList();
 
                 // Get the Lokacije to be associated with the Krstarenje based on their IDs
-                var selectedLokacijeIds = krstarenje.Lokacije.Select(l => l.Id).ToList();
+                var selectedLokacijeIds = krstarenje.LokacijeIds;
 
                 // Remove the Lokacije that are no longer selected
                 var removedLokacije = krstarenjeInDb.Lokacijas
