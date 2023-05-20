@@ -1,0 +1,105 @@
+CREATE DATABASE Kruzer;
+
+CREATE TABLE Putnik
+(
+  id INT NOT NULL,
+  ime VARCHAR(50) NOT NULL,
+  prezime VARCHAR(50) NOT NULL,
+  nadimak VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  lozinka VARCHAR(1000) NOT NULL,
+  spol CHAR(1) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE (nadimak)
+);
+
+CREATE TABLE Zaposlenik
+(
+  id INT NOT NULL,
+  ime VARCHAR(50) NOT NULL,
+  prezime VARCHAR(50) NOT NULL,
+  nadimak VARCHAR(50) NOT NULL,
+  OIB CHAR(11) NOT NULL,
+  lozinka VARCHAR(1000) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE (nadimak)
+);
+
+CREATE TABLE Lokacija
+(
+  id INT NOT NULL,
+  grad VARCHAR(200) NOT NULL,
+  država VARCHAR(200) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Administrator
+(
+  id INT NOT NULL,
+  ime VARCHAR(50) NOT NULL,
+  prezime VARCHAR(50) NOT NULL,
+  nadimak VARCHAR(50) NOT NULL,
+  lozinka VARCHAR(1000) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE (nadimak)
+);
+
+CREATE TABLE Krstarenje
+(
+  id INT NOT NULL,
+  naslov VARCHAR(100) NOT NULL,
+  opis VARCHAR(2000) NOT NULL,
+  datumPocetak DATE NOT NULL,
+  datumKraj DATE NOT NULL,
+  kapacitet INT NOT NULL,
+  popunjenost INT NOT NULL,
+  admin_Id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (admin_Id) REFERENCES Administrator(id)
+);
+
+CREATE TABLE Rezervacija
+(
+  id INT NOT NULL,
+  vrijeme DATE NOT NULL,
+  brojPutnika INT NOT NULL,
+  krstarenje_Id INT NOT NULL,
+  putnik_Id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (krstarenje_Id) REFERENCES Krstarenje(id),
+  FOREIGN KEY (putnik_Id) REFERENCES Putnik(id)
+);
+
+CREATE TABLE Upit
+(
+  id INT NOT NULL,
+  sadržaj VARCHAR(2000) NOT NULL,
+  vrijeme DATE NOT NULL,
+  putnik_Id INT NOT NULL,
+  krstarenje_Id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (putnik_Id) REFERENCES Putnik(id),
+  FOREIGN KEY (krstarenje_Id) REFERENCES Krstarenje(id)
+);
+
+CREATE TABLE Odgovor
+(
+  id INT NOT NULL,
+  sadržaj VARCHAR(2000) NOT NULL,
+  vrijeme DATE NOT NULL,
+  zaposlenik_Id INT NOT NULL,
+  upit_Id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (zaposlenik_Id) REFERENCES Zaposlenik(id),
+  FOREIGN KEY (upit_Id) REFERENCES Upit(id)
+);
+
+CREATE TABLE posjećuje
+(
+  krstarenje_Id INT NOT NULL,
+  lokacija_Id INT NOT NULL,
+  PRIMARY KEY (krstarenje_Id, lokacija_Id),
+  FOREIGN KEY (krstarenje_Id) REFERENCES Krstarenje(id),
+  FOREIGN KEY (lokacija_Id) REFERENCES Lokacija(id)
+);

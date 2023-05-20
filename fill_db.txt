@@ -1,0 +1,62 @@
+INSERT INTO putnik VALUES (1, 'Pero', 'Perić', 'pero123', 'pero@gmail.com', 'volimkrstariti123', 'M');
+INSERT INTO putnik VALUES (2, 'Andro', 'Buljo', 'andCro', 'andro99@gmail.com', 'mojalozinka', 'M');
+INSERT INTO putnik VALUES (3, 'Darko', 'Lazić', 'darkec', 'darko@gmail.com', 'kruzer', 'M');
+INSERT INTO putnik VALUES (4, 'Marija', 'Svetec', 'marIja', 'marija.svetec@gmail.com', 'idegas123', 'F');
+INSERT INTO putnik VALUES (5, 'Ana', 'Anić', 'anaBanana', 'ana.anic1@gmail.com', 'pogodime', 'F');
+INSERT INTO putnik VALUES (6, 'Zdenka', 'Sirko', 'kazden123', 'zdenka@gmail.com', 'teskalozinka', 'F');
+
+
+INSERT INTO zaposlenik VALUES (1, 'Antonio', 'Dragić', 'zaposlenik1', '57325596641', 'lozinka1', 'antonio@kruzer.com');
+INSERT INTO zaposlenik VALUES (2, 'Silvestar', 'Stalone', 'zaposlenik2', '98422346312', 'lozinka2', 'silvestar@kruzer.com');
+INSERT INTO zaposlenik VALUES (3, 'Dmitar', 'Zvonimirović', 'zaposlenik3', '99674950331', 'lozinka3', 'dmitar@kruzer.com');
+
+
+INSERT INTO administrator VALUES (1, 'Damir', 'Krolo', 'admin', 'adminlozinka');
+
+
+INSERT INTO lokacija VALUES (1, 'Split', 'Hrvatska');
+INSERT INTO lokacija VALUES (2, 'Dubrovnik', 'Hrvatska');
+INSERT INTO lokacija VALUES (3, 'Bari', 'Italija');
+INSERT INTO lokacija VALUES (4, 'Atena', 'Grčka');
+INSERT INTO lokacija VALUES (5, 'Sirakuza', 'Italija');
+INSERT INTO lokacija VALUES (6, 'Marseille', 'Francuska');
+INSERT INTO lokacija VALUES (7, 'Barcelona', 'Španjolska');
+INSERT INTO lokacija VALUES (8, 'Lisabon', 'Portugal');
+INSERT INTO lokacija VALUES (9, 'Zakintos', 'Grčka');
+INSERT INTO lokacija VALUES (10, 'Volos', 'Grčka');
+
+
+INSERT INTO krstarenje VALUES (1, 'Nezaboravno krstarenje Mediteranom', 'Pridružite nam se na nezaboravnom krstarenju Mediteranom. U gotovo 7 dana obiđite 5 čarobnih lokacija. Čekamo vas!', '2023-07-14', '2023-07-21', 8, 3, 1);
+INSERT INTO krstarenje VALUES (2, 'Romantično krstarenje obalama Grčke', 'Grčka, zemlja bogate povijesti i prirodnih ljepota. Pridružite nam se na romantičnom krstarenju u trajanju od 8 dana. Počastite sebe i svoju bolju polovicu!', '2023-08-11', '2023-08-19', 20, 2, 1);
+INSERT INTO krstarenje VALUES (3, 'Party krstarenje', 'Pet dana, pet različitih DJ-eva. Ne propusti ovu priliku, broj mjesta je ograničen.', '2023-08-21', '2023-08-26', 10, 1, 1);
+INSERT INTO krstarenje VALUES (4, 'Krstarenje do Lisabona', 'Nezaboravno krstarenje obalama Italije, Francuske, Španjolske i Portugala. Pridružite se!', '2023-07-1', '2023-07-11', 10, 3, 1);
+
+INSERT INTO posjećuje VALUES (1, 1);
+INSERT INTO posjećuje VALUES (1, 2);
+INSERT INTO posjećuje VALUES (1, 5);
+INSERT INTO posjećuje VALUES (1, 6);
+INSERT INTO posjećuje VALUES (1, 7);
+
+INSERT INTO posjećuje VALUES (2, 9);
+INSERT INTO posjećuje VALUES (2, 10);
+INSERT INTO posjećuje VALUES (2, 4);
+
+INSERT INTO posjećuje VALUES (3, 1);
+INSERT INTO posjećuje VALUES (3, 2);
+INSERT INTO posjećuje VALUES (3, 3);
+
+INSERT INTO posjećuje VALUES (4, 5);
+INSERT INTO posjećuje VALUES (4, 6);
+INSERT INTO posjećuje VALUES (4, 7);
+INSERT INTO posjećuje VALUES (4, 8);
+
+INSERT INTO rezervacija VALUES (1, '2023-05-14', 3, 1, 1);
+INSERT INTO rezervacija VALUES (2, '2023-04-24', 2, 2, 3);
+INSERT INTO rezervacija VALUES (3, '2023-05-12', 1, 3, 2);
+INSERT INTO rezervacija VALUES (4, '2023-06-07', 3, 4, 4);
+
+INSERT INTO upit VALUES (1, 'Poštovani, zanima me u koliko je rata moguće platiti putovanje. Hvala, lijep pozdrav.', '2023-05-10', 1, 1);
+INSERT INTO upit VALUES (2, 'Poštovani, koliki đeparac preporučate da uzmemo?', '2023-07-10', 2, 2);
+INSERT INTO upit VALUES (3, 'Poštovani, prvi put putujem na brodu i strah me da će mi biti zlo, imate li neki savjet kako da to spriječim? Hvala unaprijed.', '2023-07-12', 4, 3);
+
+INSERT INTO odgovor VALUES (1, 'Poštovani Pero, navedeno putovanje je moguće platiti u 12 rata po 150 eura. Lijep pozdrav.', '2023-05-10', 1, 1 );
