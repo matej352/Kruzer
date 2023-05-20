@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KruzerApp.Controllers.KrstarenjeController" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAABAAAAAQAAAAABEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\KrstarenjeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Controllers.LokacijaController" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAABAAAAAAAAAAAEAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Controllers\LokacijaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Controllers.PutnikController" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAABAAAAAAAAAAAQBAAAAAAAAAgAQAAAAAAA=</HashCode>
+      <FileName>Controllers\PutnikController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Controllers.RezervacijaController" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAgAAAAACAAAgAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Controllers\RezervacijaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.CreateKrstarenjeDto" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAUAAABgAAACAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>DTOs\CreateKrstarenjeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.CreateLokacijaDto" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\CreateLokacijaDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.CreatePutnikDto" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQACABAAAAAAAgAAAAAAAAAAAAAAQAAAgAAAA=</HashCode>
+      <FileName>DTOs\CreatePutnikDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.CreateRezervacijaDto" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAA=</HashCode>
+      <FileName>DTOs\CreateRezervacijaDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.KrstarenjeWithRezervacijeDto" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAAAAAAUAAABAAAACAAAAAAAAAACAAAAEQAAAA=</HashCode>
+      <FileName>DTOs\KrstarenjeWithRezervacijeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.LokacijaDto" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\KrstarenjeWithRezervacijeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.RezervacijaDto" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAE=</HashCode>
+      <FileName>DTOs\KrstarenjeWithRezervacijeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.PutnikDto" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQACABAAAAAAAAAAAAAAAAAAAAAAQAAAgAAAA=</HashCode>
+      <FileName>DTOs\KrstarenjeWithRezervacijeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.UpdateKrstarenjeDto" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAAAAAAQAAABgAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>DTOs\UpdateKrstarenjeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.UpdatePutnikDto" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQACABAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>DTOs\UpdatePutnikDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.DTOs.UpdateRezervacijaDto" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>DTOs\UpdateRezervacijaDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.Administrator" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAABAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Models\Administrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.Krstarenje" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAAEAAAUAAABAAAASAEAAAAAgAAAAAAAEQAAAA=</HashCode>
+      <FileName>Models\Krstarenje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.KruzerContext" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAIAAIQAAAAAAAAAAAEEQAAAgAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\KruzerContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.Lokacija" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Lokacija.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.Odgovor" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADACBAAQAAAAAAAAAAAAAgAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Models\Odgovor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.Putnik" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQACABAAAAAAAgAAAAAAAAAgAAAAQAAAwAAAA=</HashCode>
+      <FileName>Models\Putnik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.Rezervacija" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABABEAAE=</HashCode>
+      <FileName>Models\Rezervacija.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.Upit" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIADAAAIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAABEAAE=</HashCode>
+      <FileName>Models\Upit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Models.Zaposlenik" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAYACABAAAAQAAgAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Models\Zaposlenik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KruzerApp.Repositories.impl.KrstarenjeRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAABABAAAAAAAAAAAAAAAAACgABAAAAAIA=</HashCode>
+      <FileName>Repositories\impl\KrstarenjeRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KruzerApp.Repositories.impl.LokacijaRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAABAAAAAAAAAAAAAEAAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\impl\LokacijaRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KruzerApp.Repositories.impl.PutnikRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAQABAAAAAAAAAAAAAEAAAACCgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\impl\PutnikRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KruzerApp.Repositories.impl.RezervacijaRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAABAAAAAAAAAAACAEAAAAACAAAAAAAAIA=</HashCode>
+      <FileName>Repositories\impl\RezervacijaRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Program" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="KruzerApp.Repositories.IKrstarenjeRepository" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAABAAAAAAAAAAAAAAAAAAgABAAAAAIA=</HashCode>
+      <FileName>Repositories\IKrstarenjeRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KruzerApp.Repositories.ILokacijaRepository" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\ILokacijaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KruzerApp.Repositories.IPutnikRepository" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repositories\IPutnikRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="KruzerApp.Repositories.IRezervacijaRepository" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Repositories\IRezervacijaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
