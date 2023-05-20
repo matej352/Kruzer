@@ -29,6 +29,11 @@ namespace KruzerApp.Repositories.impl
         {
             var putnik = await _context.Putniks.FindAsync(id);
 
+            if (putnik is null)
+            {
+                throw new Exception($"Putnik with id {id} does not exists!");
+            }
+
             return await Task.FromResult(putnik);
         }
 
