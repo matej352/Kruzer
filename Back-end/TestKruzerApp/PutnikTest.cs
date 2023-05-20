@@ -1,5 +1,6 @@
 using FluentAssertions;
 using KruzerApp.Models;
+using KruzerApp.Repositories;
 using KruzerApp.Repositories.impl;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
@@ -11,6 +12,7 @@ namespace TestKruzerApp
     {
         private KruzerContext? _context;
         private PutnikRepository? _putnikRepository;
+        private KrstarenjeRepository? _krstarenjeRepository;
 
         [SetUp]
         public void Setup()
@@ -20,8 +22,10 @@ namespace TestKruzerApp
                 .Options;
 
             _context = new KruzerContext(options);
+            _krstarenjeRepository = new KrstarenjeRepository(_context);
 
-            _putnikRepository = new PutnikRepository(_context);
+
+            _putnikRepository = new PutnikRepository(_context, _krstarenjeRepository);
         }
 
         [TearDown]

@@ -3,6 +3,7 @@ using KruzerApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 using System.Runtime.Intrinsics.Arm;
 using System.Security.Principal;
 
@@ -11,10 +12,12 @@ namespace KruzerApp.Repositories.impl
     public class PutnikRepository : IPutnikRepository
     {
         private readonly KruzerContext _context;
+        private IKrstarenjeRepository _krstarenje;
 
-        public PutnikRepository(KruzerContext context)
+        public PutnikRepository(KruzerContext context, IKrstarenjeRepository krstarenje)
         {
             _context = context;
+            _krstarenje = krstarenje;
         }
 
         public async Task<IEnumerable<Putnik>> GetAll()
@@ -85,14 +88,39 @@ namespace KruzerApp.Repositories.impl
 
         public async Task Delete(int id)
         {
+      
+            // Find the Putnik with the specified id
             var putnik = await _context.Putniks.FindAsync(id);
-            if (putnik is null)
+
+            if (putnik != null)
+            {
+                // Find all Rezervacija records associated with the Putnik
+                var rezervacije = _context.Rezervacijas.Where(r => r.PutnikId == id);
+
+                var rezervacijeList = _context.Rezervacijas.Where(r => r.PutnikId == id).ToList();
+
+                // Remove the Rezervacija records
+                _context.Rezervacijas.RemoveRange(rezervacije);
+
+                // Remove the Putnik record
+                _context.Putniks.Remove(putnik);
+
+                // Save the changes to the database
+                await _context.SaveChangesAsync();
+
+                foreach (var r in rezervacijeList)
+                {
+                    await _krstarenje.ChangePopunjenost(r.KrstarenjeId, r.Brojputnika, "remove");
+                }
+            }
+            else
             {
                 throw new Exception($"Putnik with id {id} does not exists!");
             }
-            _context.Remove(putnik);
 
-            await _context.SaveChangesAsync();
+
+
+
         }
 
 
