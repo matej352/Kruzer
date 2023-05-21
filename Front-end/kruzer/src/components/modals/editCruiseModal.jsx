@@ -118,7 +118,7 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
   const validateEndDate = (_, value) => {
     if (value && value.isBefore(moment().startOf("day"))) {
       return Promise.reject(
-        new Error("Datum početka ne može biti prije današnjeg datuma.")
+        new Error("Datum kraja ne može biti prije današnjeg datuma.")
       );
     }
     return Promise.resolve();

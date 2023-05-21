@@ -71,9 +71,6 @@ function ReservationModal({
     if (value && value <= 0) {
       return Promise.reject(new Error("Broj putnika mora biti barem 1"));
     }
-    if (value && value + krstarenje.popunjenost > krstarenje.kapacitet) {
-      return Promise.reject(new Error("Broj putnika premašuje kapacitet"));
-    }
     return Promise.resolve();
   };
 
