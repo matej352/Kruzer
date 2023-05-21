@@ -55,8 +55,3 @@ INSERT INTO rezervacija VALUES (2, '2023-04-24', 2, 2, 3);
 INSERT INTO rezervacija VALUES (3, '2023-05-12', 1, 3, 2);
 INSERT INTO rezervacija VALUES (4, '2023-06-07', 3, 4, 4);
 
-INSERT INTO upit VALUES (1, 'Poštovani, zanima me u koliko je rata moguće platiti putovanje. Hvala, lijep pozdrav.', '2023-05-10', 1, 1);
-INSERT INTO upit VALUES (2, 'Poštovani, koliki đeparac preporučate da uzmemo?', '2023-07-10', 2, 2);
-INSERT INTO upit VALUES (3, 'Poštovani, prvi put putujem na brodu i strah me da će mi biti zlo, imate li neki savjet kako da to spriječim? Hvala unaprijed.', '2023-07-12', 4, 3);
-
-INSERT INTO odgovor VALUES (1, 'Poštovani Pero, navedeno putovanje je moguće platiti u 12 rata po 150 eura. Lijep pozdrav.', '2023-05-10', 1, 1 );
