@@ -2,7 +2,13 @@ import { Select, Modal, Form, Input, notification } from "antd";
 import { useState, useEffect } from "react";
 import { api } from "@/src/core/api";
 
-function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
+function ReservationModal({
+  visible,
+  setVisible,
+  krstarenjeId,
+  setRefetch,
+  krstarenje = {},
+}) {
   const [putnici, setPutnici] = useState([]);
 
   useEffect(() => {
@@ -64,6 +70,9 @@ function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
   const validateBrojPutnika = (_, value) => {
     if (value && value <= 0) {
       return Promise.reject(new Error("Broj putnika mora biti barem 1"));
+    }
+    if (value && value + krstarenje.popunjenost > krstarenje.kapacitet) {
+      return Promise.reject(new Error("Broj putnika premašuje kapacitet"));
     }
     return Promise.resolve();
   };

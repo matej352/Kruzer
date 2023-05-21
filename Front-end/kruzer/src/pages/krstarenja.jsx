@@ -160,6 +160,7 @@ function Krstarenja1() {
         setVisible={setModalReservationVisible}
         krstarenjeId={krstarenja[currentCruise]?.id}
         setRefetch={setRefetch}
+        krstarenje={krstarenja[currentCruise]}
       />
       <PassengerModal
         visible={modalPassengerVisible}
