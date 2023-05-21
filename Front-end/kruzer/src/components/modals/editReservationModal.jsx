@@ -17,7 +17,13 @@ function EditReservationModal({
     setVisible(false);
     const data = form.getFieldsValue();
     console.log("data ", data);
-    const response = await api.put("/api/Rezervacija/" + id, data);
+    const response = api
+      .put("/api/Rezervacija/" + id, data)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {})
+      .catch((error) => {});
 
     if (response.status == 204) {
       notification.open({
@@ -59,7 +65,7 @@ function EditReservationModal({
             ]}
             initialValue={brojputnika}
           >
-            <Input />
+            <Input type="number" />
           </Form.Item>
         </Form>
       </Modal>

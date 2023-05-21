@@ -86,7 +86,7 @@ function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
               },
             ]}
           >
-            <Input />
+            <Input type="number" />
           </Form.Item>
         </Form>
       </Modal>

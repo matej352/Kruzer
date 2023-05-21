@@ -59,7 +59,13 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
     }
     data.id = id;
     console.log(data);
-    const response = await api.put("/api/Krstarenje/" + id, data);
+    const response = api
+      .put("/api/Krstarenje/" + id, data)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {})
+      .catch((error) => {});
 
     if (response.status == 204) {
       notification.open({

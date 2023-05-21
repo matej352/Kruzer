@@ -1,5 +1,13 @@
 import React from "react";
-import { Button, Form, Input, Typography, message, notification } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  Space,
+  Typography,
+  message,
+  notification,
+} from "antd";
 import SubmitButton from "../buttons/submitButton";
 const { Title } = Typography;
 import { api } from "@/src/core/api";
@@ -9,8 +17,30 @@ export default function Passenger({ passenger }) {
 
   const { ime, prezime, nadimak, email } = passenger;
 
+  function handleDeletionNotification() {
+    notification.open({
+      message:
+        "Brisanje putnika može rezultirati brisanjem pripadajućih rezervacija! Jeste li sigurni?",
+      btn: (
+        <Button type="primary" size="small" onClick={handlePassengerDelete}>
+          Potvrdi
+        </Button>
+      ),
+      duration: null,
+    });
+  }
+
   async function handlePassengerDelete() {
-    const response = await api.delete("/api/Putnik/" + passenger.id);
+    const response = api
+      .delete("/api/Putnik/" + passenger.id)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {
+        console.log("respose from putnik delete ", response);
+      })
+      .catch((error) => {});
+
     if (response.status == 204) {
       notification.open({
         message: "Putnik obrisan!",
@@ -24,7 +54,13 @@ export default function Passenger({ passenger }) {
 
   async function onFinish() {
     const data = form.getFieldsValue();
-    const response = await api.put("/api/Putnik/" + data.nadimak, data);
+    const response = api
+      .put("/api/Putnik/" + data.nadimak, data)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {})
+      .catch((error) => {});
 
     if (response.status == 204) {
       notification.open({
@@ -43,7 +79,7 @@ export default function Passenger({ passenger }) {
     <div>
       <div className="flex justify-between items-center">
         <Title level={3}>Putnik</Title>
-        <Button type="primary" danger onClick={handlePassengerDelete}>
+        <Button type="primary" danger onClick={handleDeletionNotification}>
           Obriši putnika
         </Button>
       </div>

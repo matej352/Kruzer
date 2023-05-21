@@ -49,7 +49,14 @@ function LocationModal({ visible, setVisible }) {
   };
 
   async function handleLocationDelete(locationId) {
-    const response = await api.delete("/api/Lokacija/" + locationId);
+    console.log("locationid ", locationId);
+    const response = api
+      .delete("/api/Lokacija/" + locationId)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {})
+      .catch((error) => {});
     console.log("response ", response);
     if (response.status == 204 || response.status == 200) {
       notification.open({
@@ -57,6 +64,7 @@ function LocationModal({ visible, setVisible }) {
       });
       setRefetch((prev) => !prev);
     } else {
+      console.log("error pri brisanju lokacije");
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
@@ -73,6 +81,7 @@ function LocationModal({ visible, setVisible }) {
       });
       setRefetch((prev) => !prev);
     } else {
+      console.log("u erroru sam");
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });

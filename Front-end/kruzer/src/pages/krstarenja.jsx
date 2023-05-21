@@ -1,150 +1,176 @@
-import { DownOutlined } from "@ant-design/icons";
-import { Badge, Dropdown, Space, Table } from "antd";
-import axios from "axios";
+import { Table, Button, Space, notification, Affix } from "antd";
 import { useState, useEffect } from "react";
+import Passenger from "../components/passengerDetails/passenger";
+import "../../app/globals.css";
+import { api } from "../core/api";
+import ReservationModal from "../components/modals/reservationModal";
+import PassengerModal from "../components/modals/passengerModal";
+import EditReservationModal from "../components/modals/editReservationModal";
+import Cruise from "../components/cruiseInfo/cruise";
+import LocationModal from "../components/modals/locationModal";
 
-const api = axios.create({
-  baseURL: 'https://localhost:7295', 
-  withCredentials: false,
-});
+function Krstarenja1() {
+  const [krstarenja, setKrstarenja] = useState([]);
+  const [modalPassengerVisible, setModalPassengerVisible] = useState(false);
+  const [modalReservationVisible, setModalReservationVisible] = useState(false);
+  const [modalCruisingVisible, setModalCruisingVisible] = useState(false);
+  const [modalLocationVisible, setModalLocationVisible] = useState(false);
+  const [currentReservationUpdating, setCurrentReservationUpdating] =
+    useState();
+  const [refetch, setRefetch] = useState(false);
+  const [currentCruise, setCurrentCruise] = useState(1);
 
-const items = [
-  {
-    key: "1",
-    label: "Action 1",
-  },
-  {
-    key: "2",
-    label: "Action 2",
-  },
-];
-const Krstarenja = () => {
-  const [krstarenja, setKrstarenja] = useState([])
-
-  useEffect(() => {
-    
-    api.get('/api/Krstarenje/GetAll').then((response) => {
-      console.log(response.data);
-      setKrstarenja(response.data)
-    }).catch((error) => {
-      console.error(error);
-    });
-
-  }, [])
-  
-  const expandedRowRender = () => {
-    const columns = [
-      {
-        title: "ID",
-        dataIndex: "passengerID",
-        key: "passengerID",
-      },
-      {
-        title: "Ime",
-        dataIndex: "passengerName",
-        key: "passengerName",
-      },
-      {
-        title: "Prezime",
-        dataIndex: "passengerSurname",
-        key: "passengerSurname",
-      },
-      {
-        title: "Nadimak",
-        dataIndex: "passengerNickname",
-        key: "passengerNickname",
-      },
-      {
-        title: "Email",
-        dataIndex: "passengerEmail",
-        key: "passengerEmail",
-      },
-      {
-        title: "Spol",
-        dataIndex: "passengerGender",
-        key: "passengerGender",
-      },
-      {
-        title: "",
-        dataIndex: "operation",
-        key: "operation",
-        render: () => (
-          <Space size="middle">
-            <a onClick={() => {console.log(data)}}>Obriši</a>
-            <a>Uredi</a>
-          </Space>
-        ),
-      },
-    ];
-
-    const data = [];
-    let putnik = krstarenja[0]?.rezervacije[0]?.putnik
-    data.push({
-      key: putnik?.id,
-      passengerID: putnik?.id,
-      passengerName: putnik?.ime,
-      passengerSurname: putnik?.prezime,
-      passengerNickname:putnik?.nadimak,
-      passengerEmail:putnik?.email,
-      passengerGender:putnik?.spol,
-      dataIndex: putnik?.id
-      //data index mozda pomogne za otvaranje modala da se zna za kojeg je
-    });
-    console.log("data ", data, krstarenja)
-    
-    return <Table columns={columns} dataSource={data} pagination={false} />;
-  };
-
+  async function handleReservationDelete(reservationId) {
+    const response = api
+      .delete("/api/Rezervacija/" + reservationId)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {})
+      .catch((error) => {});
+    if (response.status == 204) {
+      notification.open({
+        message: "Rezervacija obrisana!",
+      });
+      setRefetch((prev) => !prev);
+    } else {
+      notification.open({
+        message: "Dogodila se pogreška, pokušajte ponovno!",
+      });
+    }
+  }
 
   const columns = [
     {
       title: "ID",
-      dataIndex: "reservationID",
-      key: "reservationID",
+      dataIndex: "id",
+      key: "id",
     },
     {
-      title: "Vrijeme",
-      dataIndex: "dateAndTime",
-      key: "dateAndTime",
+      title: "Datum rezervacije",
+      dataIndex: "vrijeme",
+      key: "vrijeme",
     },
     {
       title: "Broj putnika",
-      dataIndex: "passengerCount",
-      key: "passengerCount",
+      dataIndex: "brojputnika",
+      key: "brojputnika",
     },
     {
       title: "",
       key: "operation",
-      render: () => <a onClick={() => setModalVisible(true)}>Uredi</a>,
+      render: (record) => (
+        <a
+          onClick={() => {
+            console.log("key ", record);
+            setCurrentReservationUpdating(record);
+            setModalCruisingVisible(true);
+          }}
+        >
+          Uredi
+        </a>
+      ),
+    },
+    {
+      title: "",
+      key: "operation",
+      render: (record) => (
+        <a
+          onClick={() => {
+            handleReservationDelete(record.id);
+          }}
+        >
+          Obriši
+        </a>
+      ),
     },
   ];
 
-
-  const data = [];
-  for (let i = 0; i < 3; ++i) {
-    data.push({
-      key: i.toString(),
-      name: "Screen",
-      platform: "iOS",
-      version: "10.3.4.5654",
-      upgradeNum: 500,
-      creator: "Jack",
-      createdAt: "2014-12-24 23:12:00",
-    });
-  }
-
+  useEffect(() => {
+    api
+      .get("/api/Krstarenje/GetAll")
+      .then((response) => {
+        console.log(response.data);
+        setKrstarenja(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [refetch]);
 
   return (
     <>
+      <Cruise
+        cruise={krstarenja[currentCruise]}
+        setCurrentCruise={setCurrentCruise}
+        numberOfCruises={krstarenja.length}
+        setRefetch={setRefetch}
+      />
+      <div className="m-5 flex justify-end">
+        <Button type="primary" onClick={() => setModalReservationVisible(true)}>
+          Kreiraj rezervaciju
+        </Button>
+      </div>
       <Table
+        style={{
+          margin: "20px",
+        }}
         columns={columns}
         expandable={{
-          expandedRowRender,
-          defaultExpandedRowKeys: ["0"],
+          expandedRowRender: (record) => (
+            <p
+              style={{
+                margin: 0,
+                width: "40%",
+                paddingLeft: "50px",
+              }}
+            >
+              <Passenger passenger={record.putnik} />
+            </p>
+          ),
         }}
-        dataSource={data}
+        dataSource={krstarenja[currentCruise]?.rezervacije}
+      />
+      <div className="m-5">
+        <Affix offsetBottom={10}>
+          <Space>
+            <Button
+              type="primary"
+              onClick={() => setModalPassengerVisible(true)}
+            >
+              Kreiraj putnika
+            </Button>
+            <Button
+              type="primary"
+              onClick={() => setModalLocationVisible(true)}
+            >
+              Dodaj/Obriši lokacije
+            </Button>
+          </Space>
+        </Affix>
+      </div>
+      <ReservationModal
+        visible={modalReservationVisible}
+        setVisible={setModalReservationVisible}
+        krstarenjeId={krstarenja[currentCruise]?.id}
+        setRefetch={setRefetch}
+      />
+      <PassengerModal
+        visible={modalPassengerVisible}
+        setVisible={setModalPassengerVisible}
+      />
+      <EditReservationModal
+        visible={modalCruisingVisible}
+        setVisible={setModalCruisingVisible}
+        reservation={currentReservationUpdating}
+        setRefetch={setRefetch}
+      />
+      <LocationModal
+        visible={modalLocationVisible}
+        setVisible={setModalLocationVisible}
       />
     </>
   );
-};
-export default Krstarenja;
+}
+
+export default Krstarenja1;
