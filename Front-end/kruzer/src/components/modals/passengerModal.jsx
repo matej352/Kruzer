@@ -12,6 +12,7 @@ function PassengerModal({ visible, setVisible, setRefetch }) {
   };
 
   async function handleOk() {
+    await form.validateFields();
     const data = form.getFieldsValue();
     if (!data.spol) {
       data.spol = "M";

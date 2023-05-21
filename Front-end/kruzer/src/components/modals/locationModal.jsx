@@ -79,6 +79,7 @@ function LocationModal({ visible, setVisible }) {
   }
 
   async function onFinish() {
+    await form.validateFields();
     const data = form.getFieldsValue();
     const response = api
       .post("/api/Lokacija/Create", data)

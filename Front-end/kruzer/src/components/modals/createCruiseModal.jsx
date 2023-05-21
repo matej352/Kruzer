@@ -35,6 +35,7 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
   };
 
   async function handleOk() {
+    await form.validateFields();
     //form.setFieldValue("datumpocetak", datumpocetak);
     //form.setFieldValue("datumkraj", datumkraj);
     const data = form.getFieldsValue();

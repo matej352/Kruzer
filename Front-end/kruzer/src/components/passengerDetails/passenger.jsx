@@ -57,6 +57,7 @@ export default function Passenger({ passenger, setRefetch }) {
   }
 
   async function onFinish() {
+    await form.validateFields();
     const data = form.getFieldsValue();
     const response = api
       .put("/api/Putnik/" + passenger.nadimak, data)

@@ -58,6 +58,7 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
   };
 
   async function handleOk() {
+    await form.validateFields();
     let data = form.getFieldsValue();
 
     if (!data.datumpocetak) data.datumpocetak = datumpocetakState;
@@ -202,7 +203,6 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
             ]}
           >
             <Select
-              defaultValue={defLoc}
               placeholder="Odaberi lokacije"
               mode="multiple"
               onChange={handleLocationChange}

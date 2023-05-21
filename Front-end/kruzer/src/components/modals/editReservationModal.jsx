@@ -17,6 +17,7 @@ function EditReservationModal({
   console.log("reservation to be editet ", reservation);
 
   async function handleOk() {
+    await form.validateFields();
     setVisible(false);
     const data = form.getFieldsValue();
     console.log("data ", data);

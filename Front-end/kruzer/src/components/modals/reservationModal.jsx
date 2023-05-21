@@ -30,6 +30,7 @@ function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
   };
 
   async function handleOk() {
+    await form.validateFields();
     setVisible(false);
     const data = form.getFieldsValue();
     data.krstarenjeId = krstarenjeId;
