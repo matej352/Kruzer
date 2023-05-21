@@ -60,6 +60,12 @@ function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
       });
     }*/
   }
+  const validateBrojPutnika = (_, value) => {
+    if (value && value <= 0) {
+      return Promise.reject(new Error("Broj putnika mora biti barem 1"));
+    }
+    return Promise.resolve();
+  };
 
   const [form] = Form.useForm();
 
@@ -96,6 +102,7 @@ function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
             rules={[
               {
                 required: true,
+                validator: validateBrojPutnika,
               },
             ]}
           >

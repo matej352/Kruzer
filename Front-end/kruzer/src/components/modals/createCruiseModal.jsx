@@ -2,6 +2,7 @@ import { Select, Modal, Form, Input, notification, DatePicker } from "antd";
 import { useState, useEffect } from "react";
 import { api } from "@/src/core/api";
 const { TextArea } = Input;
+import moment from "moment";
 
 function CreateCruiseModal({ visible, setVisible, setRefetch }) {
   const [lokacije, setLokacije] = useState([]);
@@ -83,6 +84,32 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
     setDatumKraj(dateString);
   }
 
+  const validateStartDate = (_, value) => {
+    if (value && value.isBefore(moment().startOf("day"))) {
+      return Promise.reject(
+        new Error("Datum početka ne može biti prije današnjeg datuma.")
+      );
+    }
+    return Promise.resolve();
+  };
+
+  const validateEndDate = (_, value) => {
+    const startDate = form.getFieldValue("datumpocetak");
+    console.log(
+      "adsjkladjkls ",
+      startDate && value && moment(value).isBefore(startDate, "day"),
+      startDate,
+      value,
+      moment(value).isBefore(startDate, "day")
+    );
+    if (startDate && value && moment(value).isBefore(startDate, "day")) {
+      return Promise.reject(
+        new Error("Datum završetka mora biti poslije datuma početka.")
+      );
+    }
+    return Promise.resolve();
+  };
+
   const [form] = Form.useForm();
 
   return (
@@ -129,6 +156,7 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
             rules={[
               {
                 required: true,
+                validator: validateStartDate,
               },
             ]}
           >
@@ -140,6 +168,7 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
             rules={[
               {
                 required: true,
+                validator: validateEndDate,
               },
             ]}
           >
@@ -151,6 +180,14 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
             rules={[
               {
                 required: true,
+                validator: (_, value) => {
+                  if (value <= 0) {
+                    return Promise.reject(
+                      new Error("Kapacitet mora biti veći od 0.")
+                    );
+                  }
+                  return Promise.resolve();
+                },
               },
             ]}
           >
@@ -162,6 +199,14 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
             rules={[
               {
                 required: true,
+                validator: (_, value) => {
+                  if (value <= 0) {
+                    return Promise.reject(
+                      new Error("Popunjenost mora biti veća od 0.")
+                    );
+                  }
+                  return Promise.resolve();
+                },
               },
             ]}
           >

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import { api } from "@/src/core/api";
 const { TextArea } = Input;
+import moment from "moment";
 
 function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
   const {
@@ -108,6 +109,15 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
     setDatumKraj(dateString);
   }
 
+  const validateStartDate = (_, value) => {
+    if (value && value.isBefore(moment().startOf("day"))) {
+      return Promise.reject(
+        new Error("Datum početka ne može biti prije današnjeg datuma.")
+      );
+    }
+    return Promise.resolve();
+  };
+
   const [form] = Form.useForm();
 
   return (
@@ -156,6 +166,7 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
             rules={[
               {
                 required: true,
+                validator: validateStartDate,
               },
             ]}
           >

@@ -7,11 +7,14 @@ function EditReservationModal({
   setVisible,
   reservation = {},
   setRefetch,
+  krstarenje = {},
 }) {
   const { id, brojputnika } = reservation;
   const handleCancel = () => {
     setVisible(false);
   };
+
+  console.log("reservation to be editet ", reservation);
 
   async function handleOk() {
     setVisible(false);
@@ -46,6 +49,19 @@ function EditReservationModal({
 
   const [form] = Form.useForm();
 
+  const validateBrojPutnika = (_, value) => {
+    if (value && value <= 0) {
+      return Promise.reject(new Error("Broj putnika mora biti barem 1"));
+    }
+    if (
+      value &&
+      value - brojputnika + krstarenje.popunjenost <= krstarenje.kapacitet
+    ) {
+      return Promise.reject(new Error("Broj putnika premašuje kapacitet"));
+    }
+    return Promise.resolve();
+  };
+
   return (
     <>
       <Modal
@@ -68,6 +84,7 @@ function EditReservationModal({
             rules={[
               {
                 required: true,
+                validator: validateBrojPutnika,
               },
             ]}
             initialValue={brojputnika}
