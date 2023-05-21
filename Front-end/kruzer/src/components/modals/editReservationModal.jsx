@@ -55,7 +55,7 @@ function EditReservationModal({
     }
     if (
       value &&
-      value - brojputnika + krstarenje.popunjenost <= krstarenje.kapacitet
+      value - brojputnika + krstarenje.popunjenost > krstarenje.kapacitet
     ) {
       return Promise.reject(new Error("Broj putnika premašuje kapacitet"));
     }
