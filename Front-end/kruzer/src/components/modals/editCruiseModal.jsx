@@ -14,12 +14,20 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
     opis,
   } = cruise;
 
+  console.log("cruise ", cruise, lokacijeOld);
+
   const [lokacijeState, setLokacije] = useState([]);
   const [datumpocetakState, setDatumPocetak] = useState(datumpocetakOld);
   const [datumkrajState, setDatumKraj] = useState(datumkrajOld);
+  const [defLoc, setDefLoc] = useState([]);
 
   useEffect(() => {
     console.log("datumpocetakOld ", datumpocetakOld, datumkrajOld);
+    const arrayOfDefaultLocation = lokacijeOld?.map((lokacija) => ({
+      value: lokacija.id,
+      label: lokacija.grad + " (" + lokacija.država + ")",
+    }));
+    setDefLoc(arrayOfDefaultLocation);
     api
       .get("/api/Lokacija/GetAll")
       .then((response) => {
@@ -61,9 +69,6 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
     console.log(data);
     const response = api
       .put("/api/Krstarenje/" + id, data)
-      .then((response1) => {
-        return response1.json();
-      })
       .then((res) => {
         notification.open({
           message: "Krstarenje ažurirano!",
@@ -185,13 +190,9 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
             ]}
           >
             <Select
-              defaultValue={lokacijeOld?.map((lokacija) => ({
-                value: lokacija.id,
-                label: lokacija.grad + " (" + lokacija.država + ")",
-              }))}
+              defaultValue={defLoc}
               placeholder="Odaberi lokacije"
               mode="multiple"
-              allowClear
               onChange={handleLocationChange}
               options={lokacijeState}
             />

@@ -19,9 +19,6 @@ function EditReservationModal({
     console.log("data ", data);
     const response = api
       .put("/api/Rezervacija/" + id, data)
-      .then((response1) => {
-        return response1.json();
-      })
       .then((res) => {
         notification.open({
           message: "Rezervacija ažurirana!",

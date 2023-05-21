@@ -52,9 +52,6 @@ function LocationModal({ visible, setVisible }) {
     console.log("locationid ", locationId);
     const response = api
       .delete("/api/Lokacija/" + locationId)
-      .then((response1) => {
-        return response1.json();
-      })
       .then((res) => {
         notification.open({
           message: "Lokacija obrisana!",
@@ -84,9 +81,6 @@ function LocationModal({ visible, setVisible }) {
     const data = form.getFieldsValue();
     const response = api
       .post("/api/Lokacija/Create", data)
-      .then((response1) => {
-        return response1.json();
-      })
       .then((res) => {
         notification.open({
           message: "Lokacija dodana!",

@@ -23,9 +23,6 @@ function Krstarenja1() {
   async function handleReservationDelete(reservationId) {
     const response = api
       .delete("/api/Rezervacija/" + reservationId)
-      .then((response1) => {
-        return response1.json();
-      })
       .then((res) => {
         notification.open({
           message: "Rezervacija obrisana!",

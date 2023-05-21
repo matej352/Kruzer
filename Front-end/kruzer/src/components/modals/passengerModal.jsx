@@ -19,14 +19,12 @@ function PassengerModal({ visible, setVisible }) {
     const response = api
       .post("/api/Putnik/Create", data)
       .then((response1) => {
-        return response1.json();
-      })
-      .then((res) => {
         notification.open({
           message: "Putnik kreiran!",
         });
       })
       .catch((error) => {
+        console.log("error ", error);
         notification.open({
           message: "Dogodila se pogreška, pokušajte ponovno!",
         });

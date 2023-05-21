@@ -33,9 +33,6 @@ export default function Passenger({ passenger }) {
   async function handlePassengerDelete() {
     const response = api
       .delete("/api/Putnik/" + passenger.id)
-      .then((response1) => {
-        return response1.json();
-      })
       .then((res) => {
         notification.open({
           message: "Putnik obrisan!",
@@ -62,9 +59,6 @@ export default function Passenger({ passenger }) {
     const data = form.getFieldsValue();
     const response = api
       .put("/api/Putnik/" + passenger.nadimak, data)
-      .then((response1) => {
-        return response1.json();
-      })
       .then((res) => {
         notification.open({
           message: "Podaci putnika ažurirani!",
