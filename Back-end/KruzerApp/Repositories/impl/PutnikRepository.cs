@@ -71,9 +71,9 @@ namespace KruzerApp.Repositories.impl
 
             checkIsNewNadimakUnique(putnikDto.Nadimak, nadimak);
 
-            var putnik = await _context.Putniks.SingleOrDefaultAsync(p => p.Nadimak == nadimak);
+            Putnik? putnik = _context.Putniks.Where(p => p.Nadimak == nadimak).SingleOrDefault();
 
-            if(putnik is not null)
+            if (putnik is not null)
             {
                 putnik.Ime = putnikDto.Ime;
                 putnik.Prezime = putnikDto.Prezime;
