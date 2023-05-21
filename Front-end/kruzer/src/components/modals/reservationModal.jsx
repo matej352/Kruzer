@@ -34,9 +34,21 @@ function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
     const data = form.getFieldsValue();
     data.krstarenjeId = krstarenjeId;
     console.log("data ", data);
-    const response = await api.post("/api/Rezervacija/Create", data);
+    const response = api
+      .post("/api/Rezervacija/Create", data)
+      .then((res) => {
+        notification.open({
+          message: "Rezervacija kreirana!",
+        });
+        setRefetch((prev) => !prev);
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
 
-    if (response.status == 204 || response.status == 201) {
+    /*if (response.status == 204 || response.status == 201) {
       notification.open({
         message: "Rezervacija kreirana!",
       });
@@ -45,7 +57,7 @@ function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
-    }
+    }*/
   }
 
   const [form] = Form.useForm();

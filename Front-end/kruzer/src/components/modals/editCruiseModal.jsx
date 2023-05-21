@@ -64,10 +64,19 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
       .then((response1) => {
         return response1.json();
       })
-      .then((res) => {})
-      .catch((error) => {});
+      .then((res) => {
+        notification.open({
+          message: "Krstarenje ažurirano!",
+        });
+        setRefetch((prev) => !prev);
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
 
-    if (response.status == 204) {
+    /*if (response.status == 204) {
       notification.open({
         message: "Krstarenje ažurirano!",
       });
@@ -76,7 +85,7 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
-    }
+    }*/
     setVisible(false);
   }
 

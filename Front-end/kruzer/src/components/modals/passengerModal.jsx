@@ -16,9 +16,23 @@ function PassengerModal({ visible, setVisible }) {
     if (!data.spol) {
       data.spol = "M";
     }
-    const response = await api.post("/api/Putnik/Create", data);
+    const response = api
+      .post("/api/Putnik/Create", data)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {
+        notification.open({
+          message: "Putnik kreiran!",
+        });
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
 
-    if (response.status == 204) {
+    /*if (response.status == 204) {
       notification.open({
         message: "Putnik kreiran!",
       });
@@ -26,7 +40,7 @@ function PassengerModal({ visible, setVisible }) {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
-    }
+    }*/
     setVisible(false);
   }
 

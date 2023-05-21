@@ -19,3 +19,7 @@ Otvoriti projekt u Visual Studiu 2022 i dodati secrets.json sa sljedećim creden
 }
 ```
 
+**Upute za pokretanje Frontend aplikacije KruzerApp:**
+Potrebno je imati node v18 i npm, visual studio code ili neki slični editor.
+Otvoriti projekt i u terminalu izvršiti "npm install" te nakon toga "npm run dev". 
+Aplikacija bi trebala biti pokrenuta na portu 3000.

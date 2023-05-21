@@ -37,11 +37,17 @@ export default function Passenger({ passenger }) {
         return response1.json();
       })
       .then((res) => {
-        console.log("respose from putnik delete ", response);
+        notification.open({
+          message: "Putnik obrisan!",
+        });
       })
-      .catch((error) => {});
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
 
-    if (response.status == 204) {
+    /*if (response.status == 204) {
       notification.open({
         message: "Putnik obrisan!",
       });
@@ -49,20 +55,28 @@ export default function Passenger({ passenger }) {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
-    }
+    }*/
   }
 
   async function onFinish() {
     const data = form.getFieldsValue();
     const response = api
-      .put("/api/Putnik/" + data.nadimak, data)
+      .put("/api/Putnik/" + passenger.nadimak, data)
       .then((response1) => {
         return response1.json();
       })
-      .then((res) => {})
-      .catch((error) => {});
+      .then((res) => {
+        notification.open({
+          message: "Podaci putnika ažurirani!",
+        });
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
 
-    if (response.status == 204) {
+    /*if (response.status == 204) {
       notification.open({
         message: "Podaci putnika ažurirani!",
       });
@@ -71,6 +85,7 @@ export default function Passenger({ passenger }) {
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
     }
+    */
   }
 
   const [form] = Form.useForm();

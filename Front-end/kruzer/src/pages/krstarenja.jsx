@@ -26,9 +26,18 @@ function Krstarenja1() {
       .then((response1) => {
         return response1.json();
       })
-      .then((res) => {})
-      .catch((error) => {});
-    if (response.status == 204) {
+      .then((res) => {
+        notification.open({
+          message: "Rezervacija obrisana!",
+        });
+        setRefetch((prev) => !prev);
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
+    /*if (response.status == 204) {
       notification.open({
         message: "Rezervacija obrisana!",
       });
@@ -37,7 +46,7 @@ function Krstarenja1() {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
-    }
+    }*/
   }
 
   const columns = [

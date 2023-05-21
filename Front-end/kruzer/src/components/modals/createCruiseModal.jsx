@@ -42,9 +42,24 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
     }
     data.datumpocetak = datumpocetak;
     data.datumkraj = datumkraj;
-    const response = await api.post("/api/Krstarenje/Create", data);
+    const response = api
+      .post("/api/Krstarenje/Create", data)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {
+        notification.open({
+          message: "Krstarenje kreirano!",
+        });
+        setRefetch((prev) => !prev);
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
 
-    if (response.status == 204 || response.status == 200) {
+    /*if (response.status == 204 || response.status == 200) {
       notification.open({
         message: "Krstarenje kreirano!",
       });
@@ -53,7 +68,7 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
-    }
+    }*/
     setVisible(false);
   }
 

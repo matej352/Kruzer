@@ -22,10 +22,19 @@ function EditReservationModal({
       .then((response1) => {
         return response1.json();
       })
-      .then((res) => {})
-      .catch((error) => {});
+      .then((res) => {
+        notification.open({
+          message: "Rezervacija ažurirana!",
+        });
+        setRefetch((prev) => !prev);
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
 
-    if (response.status == 204) {
+    /*if (response.status == 204) {
       notification.open({
         message: "Rezervacija ažurirana!",
       });
@@ -35,6 +44,7 @@ function EditReservationModal({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
     }
+    */
   }
 
   const [form] = Form.useForm();

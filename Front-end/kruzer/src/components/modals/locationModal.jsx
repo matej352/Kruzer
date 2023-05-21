@@ -55,9 +55,18 @@ function LocationModal({ visible, setVisible }) {
       .then((response1) => {
         return response1.json();
       })
-      .then((res) => {})
-      .catch((error) => {});
-    console.log("response ", response);
+      .then((res) => {
+        notification.open({
+          message: "Lokacija obrisana!",
+        });
+        setRefetch((prev) => !prev);
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
+    /*console.log("response ", response);
     if (response.status == 204 || response.status == 200) {
       notification.open({
         message: "Lokacija obrisana!",
@@ -68,14 +77,29 @@ function LocationModal({ visible, setVisible }) {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
-    }
+    }*/
   }
 
   async function onFinish() {
     const data = form.getFieldsValue();
-    const response = await api.post("/api/Lokacija/Create", data);
+    const response = api
+      .post("/api/Lokacija/Create", data)
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((res) => {
+        notification.open({
+          message: "Lokacija dodana!",
+        });
+        setRefetch((prev) => !prev);
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Dogodila se pogreška, pokušajte ponovno!",
+        });
+      });
 
-    if (response.status == 204 || response.status == 200) {
+    /*if (response.status == 204 || response.status == 200) {
       notification.open({
         message: "Lokacija dodana!",
       });
@@ -85,7 +109,7 @@ function LocationModal({ visible, setVisible }) {
       notification.open({
         message: "Dogodila se pogreška, pokušajte ponovno!",
       });
-    }
+    }*/
   }
 
   const [form] = Form.useForm();
