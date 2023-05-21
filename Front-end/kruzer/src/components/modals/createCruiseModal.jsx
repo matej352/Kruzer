@@ -95,17 +95,9 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
   };
 
   const validateEndDate = (_, value) => {
-    const startDate = form.getFieldValue("datumpocetak");
-    console.log(
-      "adsjkladjkls ",
-      startDate && value && moment(value).isBefore(startDate, "day"),
-      startDate,
-      value,
-      moment(value).isBefore(startDate, "day")
-    );
-    if (startDate && value && moment(value).isBefore(startDate, "day")) {
+    if (value && value.isBefore(moment().startOf("day"))) {
       return Promise.reject(
-        new Error("Datum završetka mora biti poslije datuma početka.")
+        new Error("Datum kraja ne može biti prije današnjeg datuma.")
       );
     }
     return Promise.resolve();

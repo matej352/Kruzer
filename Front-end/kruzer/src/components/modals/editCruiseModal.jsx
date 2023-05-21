@@ -38,10 +38,6 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
           label: lokacija.grad + " (" + lokacija.država + ")",
         }));
         setLokacije(data);
-        form.setFieldValue(
-          "lokacijeIds",
-          data.map((lokacija) => lokacija.value)
-        );
       })
       .catch((error) => {
         console.error(error);
@@ -119,6 +115,15 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
     return Promise.resolve();
   };
 
+  const validateEndDate = (_, value) => {
+    if (value && value.isBefore(moment().startOf("day"))) {
+      return Promise.reject(
+        new Error("Datum početka ne može biti prije današnjeg datuma.")
+      );
+    }
+    return Promise.resolve();
+  };
+
   const [form] = Form.useForm();
 
   return (
@@ -183,6 +188,7 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
             rules={[
               {
                 required: true,
+                validator: validateEndDate,
               },
             ]}
           >
@@ -203,6 +209,10 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
             ]}
           >
             <Select
+              defaultValue={lokacijeOld?.map((lokacija) => ({
+                value: lokacija.id,
+                label: lokacija.grad + " (" + lokacija.država + ")",
+              }))}
               placeholder="Odaberi lokacije"
               mode="multiple"
               onChange={handleLocationChange}
