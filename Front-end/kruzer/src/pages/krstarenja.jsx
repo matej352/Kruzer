@@ -131,7 +131,7 @@ function Krstarenja1() {
                 paddingLeft: "50px",
               }}
             >
-              <Passenger passenger={record.putnik} />
+              <Passenger passenger={record.putnik} setRefetch={setRefetch} />
             </p>
           ),
         }}
@@ -164,6 +164,7 @@ function Krstarenja1() {
       <PassengerModal
         visible={modalPassengerVisible}
         setVisible={setModalPassengerVisible}
+        setRefetch={setRefetch}
       />
       <EditReservationModal
         visible={modalCruisingVisible}

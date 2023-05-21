@@ -60,7 +60,8 @@ function LocationModal({ visible, setVisible }) {
       })
       .catch((error) => {
         notification.open({
-          message: "Dogodila se pogreška, pokušajte ponovno!",
+          message:
+            "Lokacija ne može biti obrisana! Postoje krstarenja koja ju posjećuju",
         });
       });
     /*console.log("response ", response);
@@ -92,7 +93,7 @@ function LocationModal({ visible, setVisible }) {
           message: "Dogodila se pogreška, pokušajte ponovno!",
         });
       });
-
+    form.resetFields();
     /*if (response.status == 204 || response.status == 200) {
       notification.open({
         message: "Lokacija dodana!",

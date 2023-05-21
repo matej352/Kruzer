@@ -30,7 +30,7 @@ function EditReservationModal({
           message: "Dogodila se pogreška, pokušajte ponovno!",
         });
       });
-
+    form.resetFields();
     /*if (response.status == 204) {
       notification.open({
         message: "Rezervacija ažurirana!",

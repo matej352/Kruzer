@@ -58,6 +58,7 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
           message: "Dogodila se pogreška, pokušajte ponovno!",
         });
       });
+    form.resetFields();
 
     /*if (response.status == 204 || response.status == 200) {
       notification.open({

@@ -80,6 +80,7 @@ function EditCruiseModal({ visible, setVisible, setRefetch, cruise }) {
           message: "Dogodila se pogreška, pokušajte ponovno!",
         });
       });
+    form.resetFields();
 
     /*if (response.status == 204) {
       notification.open({

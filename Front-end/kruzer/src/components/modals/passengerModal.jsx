@@ -2,7 +2,7 @@ import { Select, Modal, Form, Input, notification } from "antd";
 import { useState, useEffect } from "react";
 import { api } from "@/src/core/api";
 
-function PassengerModal({ visible, setVisible }) {
+function PassengerModal({ visible, setVisible, setRefetch }) {
   const handleCancel = () => {
     setVisible(false);
   };
@@ -22,6 +22,7 @@ function PassengerModal({ visible, setVisible }) {
         notification.open({
           message: "Putnik kreiran!",
         });
+        setRefetch((prev) => !prev);
       })
       .catch((error) => {
         console.log("error ", error);
@@ -29,7 +30,7 @@ function PassengerModal({ visible, setVisible }) {
           message: "Dogodila se pogreška, pokušajte ponovno!",
         });
       });
-
+    form.resetFields();
     /*if (response.status == 204) {
       notification.open({
         message: "Putnik kreiran!",

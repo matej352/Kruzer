@@ -47,6 +47,7 @@ function ReservationModal({ visible, setVisible, krstarenjeId, setRefetch }) {
           message: "Dogodila se pogreška, pokušajte ponovno!",
         });
       });
+    form.resetFields();
 
     /*if (response.status == 204 || response.status == 201) {
       notification.open({

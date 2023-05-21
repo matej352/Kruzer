@@ -12,7 +12,7 @@ import SubmitButton from "../buttons/submitButton";
 const { Title } = Typography;
 import { api } from "@/src/core/api";
 
-export default function Passenger({ passenger }) {
+export default function Passenger({ passenger, setRefetch }) {
   const [messageApi, contextHolder] = message.useMessage();
 
   const { ime, prezime, nadimak, email } = passenger;
@@ -37,6 +37,7 @@ export default function Passenger({ passenger }) {
         notification.open({
           message: "Putnik obrisan!",
         });
+        setRefetch((prev) => !prev);
       })
       .catch((error) => {
         notification.open({
@@ -63,13 +64,14 @@ export default function Passenger({ passenger }) {
         notification.open({
           message: "Podaci putnika ažurirani!",
         });
+        setRefetch((prev) => !prev);
       })
       .catch((error) => {
         notification.open({
           message: "Dogodila se pogreška, pokušajte ponovno!",
         });
       });
-
+    form.resetFields();
     /*if (response.status == 204) {
       notification.open({
         message: "Podaci putnika ažurirani!",
