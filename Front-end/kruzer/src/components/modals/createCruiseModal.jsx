@@ -44,9 +44,6 @@ function CreateCruiseModal({ visible, setVisible, setRefetch }) {
     data.datumkraj = datumkraj;
     const response = api
       .post("/api/Krstarenje/Create", data)
-      .then((response1) => {
-        return response1.json();
-      })
       .then((res) => {
         notification.open({
           message: "Krstarenje kreirano!",
